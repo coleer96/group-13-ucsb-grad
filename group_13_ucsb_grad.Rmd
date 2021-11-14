@@ -9,22 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 # Attach Packages
 library(tidyverse)
 library(here)
 ```
-```{r}
+```{r, message = FALSE, warning = FALSE}
 grad_data <- read_csv(here("data", "ucsb_grad_data.csv")) # Read in the data
 ```
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 ggplot(data = grad_data, aes(x = year_abbr, y = domestic_enrollment, fill = ethnicity)) +
-  geom_col(position = "fill") +
+  geom_col(position = "fill") + # Change to from number of individuals to proportion
   labs(x = "Enrollment Year",
-       y = "Enrollment Ethnicity Percentage",
+       y = "Enrollment Ethnicity Percentage", # Change x- and y-axis labels
        caption = bold("Figure 1:") ~"Proportion of domestic graduate students enrolled at UCSB by ethnicity over time") + # Add figure caption
-  ggtitle("UCSB domestic graduate student enrollment") +
+  ggtitle("UCSB domestic graduate student enrollment") + # Add figure title
   theme_minimal() + # Change theme 
   theme(plot.caption = element_text(hjust = 0.2)) # Adjust caption placement
   
