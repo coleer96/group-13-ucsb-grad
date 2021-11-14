@@ -22,6 +22,11 @@ grad_data <- read_csv(here("data", "ucsb_grad_data.csv")) # Read in the data
 ggplot(data = grad_data, aes(x = year_abbr, y = domestic_enrollment, fill = ethnicity)) +
   geom_col(position = "fill") +
   labs(x = "Enrollment Year",
-       y = "Enrollment Ethnicity Percentage")
+       y = "Enrollment Ethnicity Percentage",
+       caption = bold("Figure 1:") ~"Proportion of domestic graduate students enrolled at UCSB by ethnicity over time") + # Add figure caption
+  ggtitle("UCSB domestic graduate student enrollment") +
+  theme_minimal() + # Change theme 
+  theme(plot.caption = element_text(hjust = 0.2)) # Adjust caption placement
+  
 ```
 
